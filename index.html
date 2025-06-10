@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asymmetric Labs</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Typed.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <style>
+    @font-face {
+      font-family: 'HelveticaNowDisplayMed';
+      src: url('/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
+    body {
+      font-family: 'HelveticaNowDisplayMed', Helvetica, Arial, sans-serif;
+    }
+
+    /* Hero video background styling */
+    .hero-video-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    /* Fade-in animation */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    
+    .fade-in-section.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Carousel styling */
+    :root {
+      --carousel-speed: 40s;
+      --slide-spacing: 70vw;
+    }
+
+    .carousel-container {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      width: max-content;
+      animation: scroll var(--carousel-speed) linear infinite;
+    }
+
+    .carousel-slide {
+      flex-shrink: 0;
+      width: var(--slide-spacing);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Contact button styling */
+    .contact-button {
+      background-color: black;
+      color: white;
+      border-radius: 9999px;
+      padding: 0.75rem 2rem;
+      font-size: 1.125rem;
+      cursor: pointer;
+      display: inline-block;
+      user-select: none;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .contact-button:hover {
+      background-color: #222;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-black h-screen overflow-x-hidden">
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full flex justify-between items-center px-6 py-4 bg-white z-50">
+    <div class="text-xl font-medium">Asymmetric Labs</div>
+    <div class="relative group text-md font-medium cursor-pointer">
+      Contact
+      <div class="absolute right-0 mt-2 w-max bg-black text-white text-sm px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        email.asymmetric@gmail.com
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Video Background -->
+  <div class="hero-video-container sticky top-0 z-10" id="hero-text">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="hero.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center leading-snug px-4 text-white">
+        <span id="typed"></span>
+      </h1>
+    </div>
+  </div>
+
+  <!-- Model Section -->
+  <div class="h-screen flex flex-col items-start justify-start px-10 pt-32 fade-in-section bg-white" id="model-section">
+    <div class="w-1/3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-snug">
+      Introducing Asymmetric A<sub>1</sub>
+    </div>
+    <div class="w-1/3 text-xl sm:text-2xl md:text-3xl leading-snug mt-4">
+      An AI that can autonomously kamikaze any target you want. 
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <section class="w-full px-10 pt-16 pb-10 fade-in-section bg-white" id="features-section">
+    <div class="carousel-container" style="height: 400px;">
+      <div class="carousel-track" id="carousel-track">
+        <!-- Slides -->
+        <div class="carousel-slide">
+          <div class="text-6xl mb-8 leading-snug font-medium">EW Resistant</div>
+          <p class="text-xl sm:text-2xl md:text-3xl leading-snug font-normal max-w-2xl">
+            Fully-onboard processing allows operation in GPS-jammed and spoofed environments.
+          </p>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="text-6xl mb-8 leading-snug font-medium">Cost Effective</div>
+          <p class="text-xl sm:text-2xl md:text-3xl leading-snug font-normal max-w-2xl">
+            Allows hundred-dollar munitions to do the work of million-dollar munitions.
+          </p>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="text-6xl mb-8 leading-snug font-medium">Precise</div>
+          <p class="text-xl sm:text-2xl md:text-3xl leading-snug font-normal max-w-2xl">
+            Capable of striking particular points on a vehicle with precision.
+          </p>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="text-6xl mb-8 leading-snug font-medium">Fully Modular</div>
+          <p class="text-xl sm:text-2xl md:text-3xl leading-snug font-normal max-w-2xl">
+            You have the hardware. We have the software. It's plug-and-play.
+          </p>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="text-6xl mb-8 leading-snug font-medium">Low Latency</div>
+          <p class="text-xl sm:text-2xl md:text-3xl leading-snug font-normal max-w-2xl">
+            Running at fast 60Hz closed-loop control.
+          </p>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="text-6xl mb-8 leading-snug font-medium">Low Power</div>
+          <p class="text-xl sm:text-2xl md:text-3xl leading-snug font-normal max-w-2xl">
+            A low power draw means minimal strain on your battery.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Asymmetric O1 Section -->
+  <div class="h-screen flex flex-col items-start justify-center px-10 fade-in-section bg-white" id="o1-section">
+    <div class="w-1/3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-snug">
+      Asymmetric O<sub>1</sub>
+    </div>
+    <div class="w-1/3 text-2xl sm:text-3xl font-medium mt-2">
+      <span id="typed-coming-soon"></span>
+    </div>
+    <div class="w-1/3 text-xl sm:text-2xl md:text-3xl leading-snug mt-4">
+      An autonomous database that stores the spatial weaknesses of every adversarial military vehicle across land, air, and sea.
+    </div>
+  </div>
+
+  <!-- Final Section -->
+  <div class="w-full flex flex-col items-center justify-center py-16 px-6 text-center space-y-6 mb-32 fade-in-section bg-white" id="final-section">
+    <div class="text-4xl sm:text-5xl md:text-6xl leading-snug">
+      The battlefield is changing...
+    </div>
+    <div class="text-5xl sm:text-6xl md:text-7xl leading-snug min-h-[100px] flex items-center justify-center">
+      <span id="typed-final"></span>
+    </div>
+    <a href="mailto:email.asymmetric@gmail.com" class="contact-button" role="button" tabindex="0">
+      Contact
+    </a>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize typing animations
+    new Typed('#typed', {
+      strings: ["We allow $100 drones to <em>consistently</em> destroy $10,000,000 vehicles."],
+      typeSpeed: 30,
+      showCursor: false,
+    });
+
+    new Typed('#typed-coming-soon', {
+      strings: ["Coming soon..."],
+      typeSpeed: 50,
+      backSpeed: 20,
+      backDelay: 2000,
+      loop: true,
+      showCursor: false
+    });
+
+    // Delayed typing for the final section
+    setTimeout(() => {
+      new Typed('#typed-final', {
+        strings: ["Smaller, precise munitions &gt; big, blunt munitions."],
+        typeSpeed: 40,
+        showCursor: false,
+        startDelay: 500,
+        loop: true,
+        backSpeed: 20,
+        backDelay: 3000
+      });
+    }, 1000);
+
+    // Intersection Observer for fade-in animations
+    const fadeInSections = document.querySelectorAll('.fade-in-section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    fadeInSections.forEach(section => observer.observe(section));
+
+    // Clone carousel slides for seamless infinite scroll
+    const track = document.getElementById('carousel-track');
+    const clone = track.cloneNode(true);
+    [...clone.children].forEach(child => track.appendChild(child.cloneNode(true)));
+  </script>
+</body>
+</html>
